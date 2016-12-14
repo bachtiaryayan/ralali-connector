@@ -20,19 +20,24 @@ module.exports = {
      *
      * @param  {String} url
      * @param  {Json} data
+     * @param {Object} headers
      * @return {Object} Callback status 'statusCode' and body 'response'
      */
-    postService: (url,data,callback) => {
-        return new Promise(function (resolve,reject) {
+    postService: (url, data, headers, callback) => {
+        return new Promise(function (resolve, reject) {
             request({
                 url: url,
                 method: 'POST',
+                headers: headers,
                 json: data
-            },(error, response, body ) =>{
+            }, (error, response, body) => {
                 if (error) {
                     return reject(error)
                 }
-                resolve({status: response.statusCode, body : body})
+                resolve({
+                    status: response.statusCode,
+                    body: body
+                })
             })
         }).nodeify(callback)
     },
@@ -42,26 +47,52 @@ module.exports = {
      *
      * @param  {String} url
      * @param  {Object} query
-     * @param  {String} auth
+     * @param  {Object} headers
      * @return {Object} Callback status 'statusCode' and body 'response'
      */
-    getService:(url,query,auth,callback) => {
-        return new Promise(function (resolve,reject) {
+    getService: (url, query, headers, callback) => {
+        return new Promise(function (resolve, reject) {
             request({
                 url: url,
                 method: 'GET',
-                qs:query,
-                headers: {
-                    'Authorization': auth
-                }
-            },(error, response, body ) =>{
+                qs: query,
+                headers: headers
+            }, (error, response, body) => {
                 if (error) {
                     return reject(error)
                 }
-            resolve({status: response.statusCode, body : body})
+                resolve({
+                    status: response.statusCode,
+                    body: body
+                })
+            })
+        }).nodeify(callback)
+    },
+
+    /**
+     * Service fot method GET.
+     *
+     * @param  {String} url
+     * @param  {Object} query
+     * @param  {Object} headers
+     * @return {Object} Callback status 'statusCode' and body 'response'
+     */
+    putService: (url, data, headers, callback) => {
+        return new Promise(function (resolve, reject) {
+            request({
+                url: url,
+                method: 'PUT',
+                headers: headers,
+                data: data
+            }, (error, response, body) => {
+                if (error) {
+                    return reject(error)
+                }
+                resolve({
+                    status: response.statusCode,
+                    body: body
+                })
             })
         }).nodeify(callback)
     }
 }
-
-
