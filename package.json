@@ -8,13 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/julisman/ralali-connector.git"
+    "url": "git+https://github.com/bachtiaryayan/ralali-connector.git"
   },
   "keywords": [
     "connector",
     "service"
   ],
   "author": "Agung Julisman <agung.julisman@yahoo.com> (http://julisman.com)",
+  "modified": "ralali-dev",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/julisman/ralali-connector/issues"
