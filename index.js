@@ -13,7 +13,7 @@ const request = require("request")
  */
 
 module.exports = {
-    version: '1.0.5',
+    version: '1.0.6',
 
     /**
      * Service fot method POST.
@@ -23,13 +23,14 @@ module.exports = {
      * @param {Object} headers
      * @return {Object} Callback status 'statusCode' and body 'response'
      */
-    postService: (url, data, headers, callback) => {
+    postService: (url, data, headers, formData = null, callback) => {
         return new Promise(function (resolve, reject) {
             request({
                 url: url,
                 method: 'POST',
                 headers: headers,
-                json: data
+                json: data,
+                formData: formData
             }, (error, response, body) => {
                 if (error) {
                     return reject(error)
