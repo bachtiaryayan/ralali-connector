@@ -13,7 +13,7 @@ const request = require("request")
  */
 
 module.exports = {
-    version: '1.0.6',
+    version: '1.0.7',
 
     /**
      * Service fot method POST.
@@ -37,6 +37,7 @@ module.exports = {
                 }
                 resolve({
                     status: response.statusCode,
+                    headers: response.headers,
                     body: body
                 })
             })
